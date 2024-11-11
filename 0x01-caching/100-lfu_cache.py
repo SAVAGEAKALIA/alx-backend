@@ -1,18 +1,25 @@
 #!/usr/bin/env python3
-"""Task 5. LFU Caching Less Frequently used"""
+"""
+Task 5. LFU Caching Less Frequently used
+"""
 
 from base_caching import BaseCaching
 
 
 class LFUCache(BaseCaching):
     def __init__(self):
-        """Initialize the LFUCache class."""
+        """
+        Initialize the LFUCache class.
+        Inherits From parent Class
+        """
         super().__init__()
         self.frequency = {}  # To track the frequency of keys
         self.access_order = {}  # To track the access order of keys
 
     def put(self, key, item):
-        """Add an item in the cache while checking Frequency"""
+        """
+        Add an item in the cache while checking Frequency
+        """
         if key is None or item is None:
             return
 
@@ -44,7 +51,9 @@ class LFUCache(BaseCaching):
         self.access_order[key] = len(self.access_order)
 
     def get(self, key):
-        """Retrieve Item an item by key."""
+        """
+        Retrieve Item an item by key.
+        """
         if key is None or key not in self.cache_data:
             return None
         # Update the frequency and access order
