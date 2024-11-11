@@ -7,6 +7,10 @@ from base_caching import BaseCaching
 
 
 class LFUCache(BaseCaching):
+    """
+    Class for LFU caching
+    Inherits from BaseCaching class
+    """
     def __init__(self):
         """
         Initialize the LFUCache class.
