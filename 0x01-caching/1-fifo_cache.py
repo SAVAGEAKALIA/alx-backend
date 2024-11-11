@@ -18,7 +18,7 @@ class FIFOCache(BaseCaching):
             if key in self.cache_data:
                 self.cache_data[key] = item
             else:
-                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                     self.queue = [value for value in self.cache_data.keys()]
                     last_key_in = self.queue[0]
                     del self.cache_data[last_key_in]

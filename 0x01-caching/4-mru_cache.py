@@ -19,7 +19,7 @@ class MRUCache(BaseCaching):
                 self.cache_data.pop(key)
                 self.cache_data[key] = item
             else:
-                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                     self.queue = [value for value in self.cache_data.keys()]
                     last_key_in = self.queue[-1]
                     del self.cache_data[last_key_in]
