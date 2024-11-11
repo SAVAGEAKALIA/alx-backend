@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Task 1: MRU Caching"""
 
-from BaseCaching import BaseCaching
+from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
