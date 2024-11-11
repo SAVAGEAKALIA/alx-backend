@@ -11,9 +11,8 @@ class BasicCache(BaseCaching):
 
     def put(self, key, item):
         """ Attach key value pair to cache dict"""
-        if key is None or item is None:
-            pass
-        self.cache_data[key] = item
+        if key is not None and item is not None:
+            self.cache_data[key] = item
 
     def get(self, key):
         """ Return item value """

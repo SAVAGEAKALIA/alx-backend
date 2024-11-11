@@ -17,7 +17,7 @@ class LIFOCache(BaseCaching):
         if key in self.cache_data:
             self.cache_data[key] = item
         elif key is None or item is None:
-            pass
+            return
         else:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 self.queue = [value for value in self.cache_data.keys()]
