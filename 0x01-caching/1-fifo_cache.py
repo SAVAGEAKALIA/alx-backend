@@ -30,7 +30,6 @@ class FIFOCache(BaseCaching):
             else:
                 self.cache_data[key] = item
 
-
     def get(self, key):
         """ Return item value """
         if key is None or key not in self.cache_data:
