@@ -34,7 +34,9 @@ class LFUCache(BaseCaching):
         else:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 # Find the least frequently used key
-                lfu_keys = [k for k, v in self.frequency.items() if v == min(self.frequency.values())]
+                lfu_keys = \
+                    [k for k, v in self.frequency.items()
+                     if v == min(self.frequency.values())]
                 if len(lfu_keys) > 1:
                     # If there is a tie, use the least recently used key
                     lfu_key = min(lfu_keys, key=lambda k: self.access_order[k])
