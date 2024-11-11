@@ -14,19 +14,22 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """Put a key/value pair into the cache"""
-        if key is not None or item is not None:
-            if key in self.cache_data:
+        if key is None or item is None:
+            return
+
+        if key in self.cache_data:
+            self.cache_data[key] = item
+        else:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                self.queue = [value for value in self.cache_data.keys()]
+                last_key_in = self.queue[0]
+                del self.cache_data[last_key_in]
+                self.queue.clear()
+                print(f'DISCARD: {last_key_in}')
                 self.cache_data[key] = item
             else:
-                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                    self.queue = [value for value in self.cache_data.keys()]
-                    last_key_in = self.queue[0]
-                    del self.cache_data[last_key_in]
-                    self.queue.clear()
-                    print(f'DISCARD: {last_key_in}')
-                    self.cache_data[key] = item
-                else:
-                    self.cache_data[key] = item
+                self.cache_data[key] = item
+
 
     def get(self, key):
         """ Return item value """
