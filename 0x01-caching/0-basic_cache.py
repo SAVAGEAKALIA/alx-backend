@@ -7,7 +7,7 @@ from BaseCaching import BaseCaching
 class BasicCache(BaseCaching):
     """Child Class that inherits from Parent Class BaseCaching"""
     def __int__(self, cache_data):
-        super().__init__()
+        super().__init__(cache_data)
 
     def put(self, key, item):
         """ Attach key value pair to cache dict"""
