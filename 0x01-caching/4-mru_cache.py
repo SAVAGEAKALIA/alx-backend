@@ -14,22 +14,20 @@ class MRUCache(BaseCaching):
 
     def put(self, key, item):
         """Put a key/value pair into the cache"""
-        if key in self.cache_data:
-            # temp_store = self.cache_data[key]
-            self.cache_data.pop(key)
-            self.cache_data[key] = item
-        elif key is None or item is None:
-            return
-        else:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                self.queue = [value for value in self.cache_data.keys()]
-                last_key_in = self.queue[-1]
-                del self.cache_data[last_key_in]
-                self.queue.clear()
-                print(f'DISCARD: {last_key_in}')
+        if key is not None or item is not None:
+            if key in self.cache_data:
+                self.cache_data.pop(key)
                 self.cache_data[key] = item
             else:
-                self.cache_data[key] = item
+                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                    self.queue = [value for value in self.cache_data.keys()]
+                    last_key_in = self.queue[-1]
+                    del self.cache_data[last_key_in]
+                    self.queue.clear()
+                    print(f'DISCARD: {last_key_in}')
+                    self.cache_data[key] = item
+                else:
+                    self.cache_data[key] = item
 
     def get(self, key):
         """ Return item value"""
