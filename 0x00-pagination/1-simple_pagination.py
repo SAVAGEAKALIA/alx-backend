@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ Task 1: Pagination - Simple pagination """
 
 import csv

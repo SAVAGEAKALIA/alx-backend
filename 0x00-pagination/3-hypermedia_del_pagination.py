@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ Task 3: Pagination - Deletion-resilient hypermedia pagination"""
 
 import csv
