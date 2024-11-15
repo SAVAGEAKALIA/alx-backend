@@ -12,6 +12,7 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """Initialization insatance of the server"""
         self.__dataset = None
         self.__indexed_dataset = None
 
@@ -37,7 +38,13 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict[str, Any]:
+    def get_hyper_index(self, index: int = None, page_size: int = 10) \
+            -> Dict[str, Any]:
+        """returns a dictionary containing the following key-value pairs:
+
+            index: the index of the dataset item
+            data: the dataset item at the given index
+            page_size: the length of the returned dataset page"""
 
         indexed_data = self.indexed_dataset()
         assert 0 <= index < len(indexed_data), \
@@ -66,6 +73,7 @@ class Server:
             "index": index,
             "data": data_proper,
             "page_size": page_size,
-            "next_index": next_index if next_index < len(indexed_data) else None,
+            "next_index":
+                next_index if next_index < len(indexed_data) else None,
         }
         return to_dict
